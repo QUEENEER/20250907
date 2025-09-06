@@ -49,7 +49,7 @@ int main(){
 		}
 		max=-10000;
 		for(k=1;k<=i;k++){
-			num=(arr[k][1]-arr[1][1]+j)*arr[k][2];
+			num=(arr[k][1]-arr[1][1]-j)*arr[k][2];
 			if(num>max){
 				max=num;
 				price=arr[k][i];
