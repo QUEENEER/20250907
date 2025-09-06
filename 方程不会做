@@ -1,0 +1,17 @@
+#include <bits/stdc++.h>
+using namespace std;
+struct node{
+	double p,q;
+}arr[100];
+int main(){
+	int a,b;
+	cin>>a;
+	for(int i=0;i<=5;i++){
+		cin>>arr[i].p>>arr[i].q;
+	}
+	printf("-1 -1");
+	cin>>b;
+	int m;
+	m=
+	return 0;
+}
