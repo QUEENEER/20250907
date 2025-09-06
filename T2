@@ -1,0 +1,65 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+	int arr[500][500];
+	int i=1,j=1,k,expect,down,max,temp,cha,xl,num,price,p;
+	cin>>expect;
+	while (cin>>arr[i][1]>>arr[i][2]&&arr[i][1]!=-1&&arr[i][1]!=-1){
+		i++;
+		if(i>2&&arr[i-1][1]-arr[i-2][1]>1){
+			i--;
+			cha=(arr[i-1][2]-arr[i][2]/arr[i][1]-arr[i-1][1]);
+			temp=arr[i][1];
+			for(j=arr[i-1][1]+1;j<=temp;j++){
+				arr[i][1]=j;
+				arr[i][2]=arr[i-1][2]-cha;
+				i++;
+			}
+			
+		}
+	}
+	cin>>down;
+	i--;
+	xl=arr[i][2];
+	while(xl>0){
+		if(xl-down>0){
+			break;
+		}
+		else{
+			xl-=down;
+			i++;
+			arr[i][1]=arr[i-1][1]+1;
+			arr[i][2]=xl;
+		}
+	}
+	for(j=1;j<=1000;j++){
+		max=-10000;
+		for(k=1;k<=i;k++){
+			num=(arr[k][1]-arr[1][1]+j)*arr[k][2];
+			if(num>max){
+				max=num;
+				price=arr[k][i];
+				p=1;
+			}
+		}
+		if(price==expect){
+			cout<<j*p;
+			return 0;
+		}
+		max=-10000;
+		for(k=1;k<=i;k++){
+			num=(arr[k][1]-arr[1][1]+j)*arr[k][2];
+			if(num>max){
+				max=num;
+				price=arr[k][i];
+				p=-1;
+			}
+		}
+		if(price==expect){
+			cout<<j*p;
+			return 0;
+		}
+		
+	}
+}
