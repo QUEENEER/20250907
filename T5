@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+using namespace std;
+const int N=11;
+int mm[N][N];
+int dp[N][N][N][N];
+
+int main() {
+	int a;
+	cin>>a;
+	for(;;){
+		int m,n,o;
+		cin>>m>>n>>o;
+		if(m==n&&n==o&&o==0){
+			break;
+		}
+		else mm[m][n]=o;
+	}
+	for(int i=1;i<=a;i++){
+		for(int j=1;j<=a;j++){
+			for(int k=1;k<=a;k++){
+				for(int l=1;l<=a;l++){
+					dp[i][j][k][l]=max(max(dp[i-1][j][k-1][l],dp[i-1][j][k][l-1]),max(dp[i][j-1][k-1][l],dp[i][j-1][k][l-1]))+mm[i][j]+mm[k][l];
+					if(i==k&&l==j){
+						dp[i][j][k][l]-=mm[i][j];
+					}
+				}
+			}
+		}
+	}
+	cout<<dp[a][a][a][a]<<endl;
+	return 0;
+}
